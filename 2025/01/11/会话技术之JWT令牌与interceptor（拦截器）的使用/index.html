@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="JWT令牌JWT令牌的认识JWT令牌即JSON Web Token,是目前比较流行的一种跨域认证方式。 在过去前后端会话技术以session为主，但是存在着一些弊端，如扩展性（scaling）不好，即如果要在服务器集群就要实现session的数据共享，每台服务器都能够获取到session数据，这在session会话技术是很难实现的。而JWT令牌则是解决这种问题的一种有效方式——-它所有的数据都保存">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="d:\blogs\source\images\00.png">
-<meta property="og:image" content="d:\blogs\source\images\001-1736605108246-3.png">
-<meta property="og:image" content="d:\blogs\source\images\002.png">
+<meta property="og:image" content="d:/blogs/source/images/18.png">
+<meta property="og:image" content="d:/blogs/source/images/19.png">
+<meta property="og:image" content="d:/blogs/source/images/20.png">
 <meta property="article:published_time" content="2025-01-11T14:20:32.980Z">
-<meta property="article:modified_time" content="2025-01-11T14:20:09.820Z">
+<meta property="article:modified_time" content="2025-01-12T10:01:11.213Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:\blogs\source\images\00.png">
+<meta name="twitter:image" content="d:/blogs/source/images/18.png">
     
     
     <!--- Icon Part-->
@@ -304,8 +304,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-11 22:20:09</span>
-            <span class="mobile">2025-01-11 22:20:09</span>
+            <span class="desktop">2025-01-12 18:01:11</span>
+            <span class="mobile">2025-01-12 18:01:11</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -358,12 +358,13 @@
 <p>当然 除了官方字段，还可以在这个部分定义私有字段如:</p>
 <div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567890&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Meeeu&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;admin&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>3.对于Signature,它是对前两者部分的签名，为的是防止数据被篡改。在这里首先需要指定一个<strong>密钥</strong>（secret），这个密钥只有服务器知道，服务器在编码解码JWT令牌时都需要依靠这个密钥，因此不能泄露给用户。Signature使用Header里面的签名算法加上密钥对这两部分进行算出签名。算出签名后，把这三个部分拼成一个字符串，每个部分以”.”分隔，如图：<img  
+<p>3.对于Signature,它是对前两者部分的签名，为的是防止数据被篡改。在这里首先需要指定一个<strong>密钥</strong>（secret），这个密钥只有服务器知道，服务器在编码解码JWT令牌时都需要依靠这个密钥，因此不能泄露给用户。Signature使用Header里面的签名算法加上密钥对这两部分进行算出签名。算出签名后，把这三个部分拼成一个字符串，每个部分以”.”分隔，如图：</p>
+<p>​     <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="D:\blogs\source\images\00.png"
-                      alt="00"
-                >     </p>
+                     data-src="D:/blogs/source/images/18.png"
+                      alt="18"
+                ></p>
 <p><u>可以额外提到的是前两部分都是以Base64编码方式编码出的字符串，因此重要的隐私信息如果没有再次进行加密不建议放在里面容易泄露</u></p>
 <h3 id="JWT令牌的特点"><a href="#JWT令牌的特点" class="headerlink" title="JWT令牌的特点"></a>JWT令牌的特点</h3><ol>
 <li>JWT不加密情况下不能将秘密数据写入JWT</li>
@@ -391,15 +392,15 @@
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="D:\blogs\source\images\001-1736605108246-3.png"
-                      alt="001" style="zoom:50%;" 
+                     data-src="D:/blogs/source/images/19.png"
+                      alt="19" style="zoom:50%;" 
                 >
 
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="D:\blogs\source\images\002.png"
-                      alt="002"
+                     data-src="D:/blogs/source/images/20.png"
+                      alt="20"
                 ></p>
 
         </div>
@@ -415,7 +416,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-11 22:20:09
+                    :</strong> 2025-01-12 18:01:11
             </li>
         
         <li>
