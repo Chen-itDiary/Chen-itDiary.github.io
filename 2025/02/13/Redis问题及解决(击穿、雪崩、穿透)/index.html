@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2025/01/11/会话技术之jwt令牌与interceptor（拦截器）的使用/"/>
+    <link rel="canonical" href="http://example.com/2025/02/13/redis问题及解决(击穿、雪崩、穿透)/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -21,21 +21,24 @@
     
     
         
-        <meta name="description" content="JWT令牌JWT令牌的认识JWT令牌即JSON Web Token,是目前比较流行的一种跨域认证方式。 在过去前后端会话技术以session为主，但是存在着一些弊端，如扩展性（scaling）不好，即如果要在服务器集群就要实现session的数据共享，每台服务器都能够获取到session数据，这在session会话技术是很难实现的。而JWT令牌则是解决这种问题的一种有效方式——-它所有的数据都保存">
+        <meta name="description" content="Redis问题及解决(击穿、雪崩、穿透)1.0Redis介绍Redis是开源的内存数据结构存储系统，可以作为存储底层数据库热点数据的**缓存中间件**。它不仅可以用作缓存层，还可以作为持久化层使用。Redis使用内存作为数据存储的介质，能够提供非常快速的读写操作，这使得它在缓存场景中受到大量的使用，为底层数据库的安全性能保驾护航(防止大量请求访问底层数据库造成数据库的压力)。 1.1Redis特点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="会话技术之JWT令牌与interceptor（拦截器）的使用">
-<meta property="og:url" content="http://example.com/2025/01/11/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BJWT%E4%BB%A4%E7%89%8C%E4%B8%8Einterceptor%EF%BC%88%E6%8B%A6%E6%88%AA%E5%99%A8%EF%BC%89%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="Redis问题及解决(击穿、雪崩、穿透)">
+<meta property="og:url" content="http://example.com/2025/02/13/Redis%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3(%E5%87%BB%E7%A9%BF%E3%80%81%E9%9B%AA%E5%B4%A9%E3%80%81%E7%A9%BF%E9%80%8F)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="JWT令牌JWT令牌的认识JWT令牌即JSON Web Token,是目前比较流行的一种跨域认证方式。 在过去前后端会话技术以session为主，但是存在着一些弊端，如扩展性（scaling）不好，即如果要在服务器集群就要实现session的数据共享，每台服务器都能够获取到session数据，这在session会话技术是很难实现的。而JWT令牌则是解决这种问题的一种有效方式——-它所有的数据都保存">
+<meta property="og:description" content="Redis问题及解决(击穿、雪崩、穿透)1.0Redis介绍Redis是开源的内存数据结构存储系统，可以作为存储底层数据库热点数据的**缓存中间件**。它不仅可以用作缓存层，还可以作为持久化层使用。Redis使用内存作为数据存储的介质，能够提供非常快速的读写操作，这使得它在缓存场景中受到大量的使用，为底层数据库的安全性能保驾护航(防止大量请求访问底层数据库造成数据库的压力)。 1.1Redis特点">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/18.png">
-<meta property="og:image" content="http://example.com/images/19.png">
-<meta property="og:image" content="http://example.com/images/20.png">
-<meta property="article:published_time" content="2025-01-11T14:20:32.980Z">
-<meta property="article:modified_time" content="2025-02-07T03:55:22.534Z">
+<meta property="og:image" content="http://example.com/images/24.png">
+<meta property="og:image" content="http://example.com/images/27.png">
+<meta property="og:image" content="http://example.com/images/21.png">
+<meta property="og:image" content="http://example.com/images/24-1739096338597-8.png">
+<meta property="og:image" content="http://example.com/images/25.png">
+<meta property="og:image" content="http://example.com/images/26.png">
+<meta property="article:published_time" content="2025-02-13T14:27:22.443Z">
+<meta property="article:modified_time" content="2025-02-13T14:46:02.132Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/18.png">
+<meta name="twitter:image" content="http://example.com/images/24.png">
     
     
     <!--- Icon Part-->
@@ -47,7 +50,7 @@
     
     <title>
         
-            会话技术之JWT令牌与interceptor（拦截器）的使用 | Chen-itDiary
+            Redis问题及解决(击穿、雪崩、穿透) | Chen-itDiary
         
     </title>
 
@@ -273,7 +276,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">会话技术之JWT令牌与interceptor（拦截器）的使用</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Redis问题及解决(击穿、雪崩、穿透)</h1>
 			</div>
 			
 		</div>
@@ -294,15 +297,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-01-11 22:20:32</span>
-        <span class="mobile">2025-01-11 22:20:32</span>
+        <span class="desktop">2025-02-13 22:27:22</span>
+        <span class="mobile">2025-02-13 22:27:22</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-02-07 11:55:22</span>
-            <span class="mobile">2025-02-07 11:55:22</span>
+            <span class="desktop">2025-02-13 22:46:02</span>
+            <span class="mobile">2025-02-13 22:46:02</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -329,75 +332,122 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h2 id="JWT令牌"><a href="#JWT令牌" class="headerlink" title="JWT令牌"></a>JWT令牌</h2><h3 id="JWT令牌的认识"><a href="#JWT令牌的认识" class="headerlink" title="JWT令牌的认识"></a>JWT令牌的认识</h3><p>JWT令牌即JSON Web Token,是目前比较流行的一种<strong>跨域认证方式</strong>。</p>
-<p>在过去前后端会话技术以session为主，但是存在着一些弊端，如扩展性（scaling）不好，即如果要在服务器集群就要实现session的数据共享，每台服务器都能够获取到session数据，这在session会话技术是很难实现的。而JWT令牌则是解决这种问题的一种有效方式——-它所有的数据都保存在了客户端，包括用户的账户密码等，并以此形成一个令牌（包含用户信息的字符串），在往后的每次访问服务器时都带上这个令牌，服务器只要检验令牌是否有效即可判断是否通过用户这次请求。</p>
-<p>这不仅可以减轻服务器持久层的访问压力，也使得服务器从此变成了<strong>“无状态”</strong>的情况，解决了扩展性不好的弊端，即服务器不再需要保存有关用户的信息，只需检验每次用户访问自带的令牌即可。</p>
-<h3 id="JWT令牌的结构"><a href="#JWT令牌的结构" class="headerlink" title="JWT令牌的结构"></a>JWT令牌的结构</h3><p>JWT令牌由三部分组成:</p>
-<ul>
-<li>Header(头部)</li>
-<li>Payload(负载)</li>
-<li>Signature(签名)</li>
-</ul>
-<p>而这每一部分都是json格式的对象</p>
-<p>1.对于Header:</p>
-<div class="code-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HS256&quot;</span><span class="punctuation">,</span><span class="comment">//默认展示签名的算法</span></span><br><span class="line">  <span class="attr">&quot;typ&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JWT&quot;</span><span class="comment">//表示令牌的类型，JWT统一写成jwt</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>2.对于Payload，官方规定了七个官方字段可供使用,</p>
-<ul>
-<li>iss (issuer)：签发人</li>
-<li>exp (expiration time)：过期时间</li>
-<li>sub (subject)：主题</li>
-<li>aud (audience)：受众</li>
-<li>nbf (Not Before)：生效时间</li>
-<li>iat (Issued At)：签发时间  </li>
-<li>jti (JWT ID)：编号</li>
-</ul>
-<p>当然 除了官方字段，还可以在这个部分定义私有字段如:</p>
-<div class="code-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567890&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Meeeu&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;admin&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>3.对于Signature,它是对前两者部分的签名，为的是防止数据被篡改。在这里首先需要指定一个<strong>密钥</strong>（secret），这个密钥只有服务器知道，服务器在编码解码JWT令牌时都需要依靠这个密钥，因此不能泄露给用户。Signature使用Header里面的签名算法加上密钥对这两部分进行算出签名。算出签名后，把这三个部分拼成一个字符串，每个部分以”.”分隔，如图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../images/18.png"
-                      alt="18"
-                ></p>
-<p><u>可以额外提到的是前两部分都是以Base64编码方式编码出的字符串，因此重要的隐私信息如果没有再次进行加密不建议放在里面容易泄露</u></p>
-<h3 id="JWT令牌的特点"><a href="#JWT令牌的特点" class="headerlink" title="JWT令牌的特点"></a>JWT令牌的特点</h3><ol>
-<li>JWT不加密情况下不能将秘密数据写入JWT</li>
-<li>JWT令牌的使用可以有效地降低服务器查询数据库的次数</li>
-<li>JWT令牌具有时限性，因此无法在使用的中途进行废止</li>
-<li>为了减少盗用，因该尽量使用HTTPS协议进行传输JWT</li>
-</ol>
-<h2 id="interceptor-拦截器"><a href="#interceptor-拦截器" class="headerlink" title="interceptor(拦截器)"></a>interceptor(拦截器)</h2><h3 id="interceptor的认识"><a href="#interceptor的认识" class="headerlink" title="interceptor的认识"></a>interceptor的认识</h3><p>interceptor拦截器用于拦截相应的请求，进而对其进行一系列如<strong>权限验证、数据修改</strong>等操作的手段。</p>
-<p>interceptor拦截器可以分为三种：</p>
-<ul>
-<li><code>preHandle()</code>: 请求处理前进行拦截。</li>
-<li><code>postHandle()</code>: 请求处理后，但在视图渲染前。</li>
-<li><code>afterCompletion()</code>: 请求处理后，视图渲染后。</li>
-</ul>
-<h3 id="interceptor与JWT"><a href="#interceptor与JWT" class="headerlink" title="interceptor与JWT"></a>interceptor与JWT</h3><p><u>本文主要注重介绍interceptor前置拦截和JWT令牌的配合使用，因此只介绍preHandle。</u>JWT令牌是我们广泛用于用户登录的一种手段，在访问时带上JWT令牌但如何让服务器自动检测校验就成了问题，因此我们一般自定义一个JWT令牌拦截器，实现它的前置拦截方法（方法内进行JWT令牌校验），并将之加入到Spring拦截容器中，设置拦截请求的路径即可。</p>
-<p>具体的步骤大致如下：</p>
+			<h1 id="Redis问题及解决-击穿、雪崩、穿透"><a href="#Redis问题及解决-击穿、雪崩、穿透" class="headerlink" title="Redis问题及解决(击穿、雪崩、穿透)"></a>Redis问题及解决(击穿、雪崩、穿透)</h1><h2 id="1-0Redis介绍"><a href="#1-0Redis介绍" class="headerlink" title="1.0Redis介绍"></a>1.0Redis介绍</h2><p>Redis是开源的内存数据结构存储系统，可以作为存储底层数据库热点数据的**<u>缓存中间件</u>**。它不仅可以用作缓存层，还可以作为持久化层使用。Redis<u><strong>使用内存</strong></u>作为数据存储的介质，能够提供非常<u><strong>快速的读写操作</strong></u>，这使得它在缓存场景中受到大量的使用，为底层数据库的安全性能保驾护航(防止大量请求访问底层数据库造成数据库的压力)。</p>
+<h3 id="1-1Redis特点"><a href="#1-1Redis特点" class="headerlink" title="1.1Redis特点"></a>1.1Redis特点</h3><ol>
+<li><p><strong>内存存储</strong>:Redis将数据存储在内存中，相比传统的磁盘存储读写操作快得多，同时它也支持把数据持久化到磁盘</p>
+</li>
+<li><p><strong>高性能</strong>:Redis 支持每秒数百万次的读取和写入操作，可以处理非常高的并发请求</p>
+</li>
+<li><p><strong>支持多种数据结构</strong>:除了字符串之外，Redis还支持哈希、列表、集合等多种数据结构，使得Redis可以灵活运用于多种场景</p>
+</li>
+<li><p><strong>分布式</strong>:Redis可以使用集群模式，将数据分布在多个节点上</p>
+</li>
+<li><p><strong>原子性</strong>:Redis 支持对数据进行原子性的增、删、改等操作，确保高并发环境下的数据一致性。</p>
+</li>
+<li><p><strong>事务支持</strong>：Redis 提供简单的事务机制，可以将多个命令放入队列中按顺序执行，支持回滚等操作。</p>
+<h3 id="1-2Redis应用场景"><a href="#1-2Redis应用场景" class="headerlink" title="1.2Redis应用场景"></a>1.2Redis应用场景</h3><ol>
+<li><p><strong>缓存使用</strong>:由于Redis具有超高的读取速度，一般可应用于缓存数据库的数据，如商铺信息、热点等，减轻数据库查询的压力</p>
+</li>
+<li><p><strong>会话存储</strong>：可以将用户会话数据（如登录状态、用户信息）存储在 Redis 中，以提高读取速度，同时可以替代传统的session会话技术，解决session无法数据共享的问题；还可以运用redis实现短信登录的功能。</p>
+<h2 id="2-0Redis问题"><a href="#2-0Redis问题" class="headerlink" title="2.0Redis问题"></a>2.0Redis问题</h2><p>Redis是一个非常好用的缓存工具，平衡着我们底层数据库的访问压力，一定程度上维护其稳定性。但是其也是一把双刃剑，有利也有弊。在我们使用Redis时不可避免地会产生一些经典的缓存问题，例如**<u>缓存击穿、缓存雪崩、缓存穿透</u>**。如果解决的好自然可以持续地发挥其优点，但是如果没有处理好则仍有可能造成底层数据库的高压访问乃至崩溃的情况。</p>
 <ol>
-<li>自定义JWT令牌拦截器实现拦截器接口（HandlerInterceptor）</li>
-<li>实现preHandle（）方法进行JWT令牌校验</li>
-<li>将JWT令牌拦截器加入到Spring拦截容器中</li>
-<li>设置要拦截的请求路径</li>
+<li><p>缓存穿透:是指用户发出一请求到达缓存时没有获取到结果，进而到底层数据库访问仍然没有获取到结果，即缓存和数据库都没有该数据。因为缓存没有该数据，所以请求都会打到数据库中，某些人利用这一空挡持续发出大量请求直达到数据库，造成数据库的访问压力，进而崩溃的问题。</p>
+</li>
+<li><p>缓存击穿:是指某时刻某一热点数据在缓存中失效，同时该热点数据被<strong>高并发访问</strong>且又<strong>缓存重建业务较慢</strong>，这也会造成大量请求打到数据库造成数据库访问压力的问题。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../images/24.png"
+                      alt="24"
+                ></p>
+</li>
+<li><p>缓存雪崩:是指<strong>大量的缓存数据失效</strong>或<strong>Redis服务宕机</strong>，使得许多请求从缓存中无法获取到数据进而访问数据库的情况，这种情况与缓存击穿类似但不同，缓存雪崩是大量的缓存数据失效，造成许多不同请求都访问到数据库导致数据库压力。</p>
+</li>
 </ol>
-<p>这样我们就实现了如今比较流行的JWT令牌校验登入网站的操作了。</p>
-<p>具体的例图如下:</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/../images/19.png"
-                      alt="19"
+                     data-src="/../images/27.png"
+                      alt="27"
                 ></p>
+<h3 id="2-1缓存穿透"><a href="#2-1缓存穿透" class="headerlink" title="2.1缓存穿透"></a>2.1缓存穿透</h3><h4 id="2-11解决方式"><a href="#2-11解决方式" class="headerlink" title="2.11解决方式"></a>2.11解决方式</h4><h5 id="2-111方法一-缓存建立null值"><a href="#2-111方法一-缓存建立null值" class="headerlink" title="2.111方法一.缓存建立null值"></a>2.111方法一.缓存建立null值</h5><p>我们知道缓存穿透就是因为缓存层和数据库都没有用户请求访问的数据，导致的大量请求直达数据库问题。因此我们就可以在用户第一次访问该空挡数据时，将一个虚假的null值存储在缓存中，并设立TTL时间避免缓存层存储大量虚假空值。</p>
+<p><u><strong>即在缓存中建立虚假null值并设置TTL时间</strong></u></p>
+<h6 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h6><ul>
+<li>实现简单，维护方便</li>
+</ul>
+<h6 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h6><ul>
+<li>内存额外的消耗</li>
+<li>可能造成数据短期的不一致(例如底层数据库刚好更新了用户访问的数据，但缓存层虚假null值仍未过期，用户访问的数据仍是null值而不是刚更新的底层数据库存储的数据)</li>
+</ul>
+<h5 id="2-112方法二-布隆过滤器"><a href="#2-112方法二-布隆过滤器" class="headerlink" title="2.112方法二:布隆过滤器"></a>2.112方法二:布隆过滤器</h5><p>布隆过滤器其实是一种算法，它的原理是在客户端与Redis之间再<strong>添加一层拦截</strong>，对用户的请求进行判断。布隆过滤器本身通过一定的算法将数据库数据存储，然后对用户的请求进行判断—–如果用户请求的数据不存在，则直接驳回请求；如果用户请求的数据显示存在，则放行进入Redis中查询数据，如果在Redis中没有命中缓存，则再次放行进入到底层数据库查询数据，将数据返回（<strong>注意可能也没有查到数据</strong>）。</p>
+<h6 id="布隆过滤器的特点"><a href="#布隆过滤器的特点" class="headerlink" title="布隆过滤器的特点:"></a>布隆过滤器的特点:</h6><ul>
+<li><h6 id="判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；"><a href="#判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；" class="headerlink" title="判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；"></a>判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；</h6></li>
+</ul>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/../images/20.png"
-                      alt="20"
+                     data-src="/../images/21.png"
+                      alt="21"
                 ></p>
+<h6 id="优点-1"><a href="#优点-1" class="headerlink" title="优点:"></a>优点:</h6><ul>
+<li>内存占用较少，没有多余key值存储在缓存中</li>
+</ul>
+<h6 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h6><ul>
+<li>实现复杂</li>
+<li>存在误判的可能性(仍然可能导致穿透的风险)</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-2缓存雪崩"><a href="#2-2缓存雪崩" class="headerlink" title="2.2缓存雪崩"></a>2.2缓存雪崩</h3><h4 id="2-21解决方式"><a href="#2-21解决方式" class="headerlink" title="2.21解决方式"></a>2.21解决方式</h4><h5 id="2-211方法一-给不同Key的TTL设置随机值"><a href="#2-211方法一-给不同Key的TTL设置随机值" class="headerlink" title="2.211方法一:给不同Key的TTL设置随机值"></a>2.211方法一:给不同Key的TTL设置随机值</h5><p>缓存雪崩的原因之一就是大量的缓存数据失效，我们只要设法令其不在统一时间失效就可以有效解决这个问题。因此我们在给Redis中存储数据时，将数据的TTL值设为随机值，可以大幅度降低大量缓存数据同时失效的可能。</p>
+<p><strong><u>即在存储缓存数据时设置随机的TTL值</u></strong></p>
+<h5 id="2-212方法二-利用Redis的集群"><a href="#2-212方法二-利用Redis的集群" class="headerlink" title="2.212方法二:利用Redis的集群"></a>2.212方法二:利用Redis的集群</h5><p>利用哨兵模式，实现Redis的高可用性。</p>
+<p>我们搭建Redis的集群形成主从，利用哨兵进行监控，如果发现主Redis服务器宕机即从其他Redis服务器选择一个代替当前宕机的Redis服务器，同时主从可以实现数据的同步，即使主Redis宕机，从Redis上仍然可以获取到数据不会导致数据的丢失,以此来确保Redis的高可用性。</p>
+<p><strong><u>即搭建Redis集群提高服务的可用性</u></strong></p>
+<h5 id="2-213方法三-给服务添加多级缓存"><a href="#2-213方法三-给服务添加多级缓存" class="headerlink" title="2.213方法三:给服务添加多级缓存"></a>2.213方法三:给服务添加多级缓存</h5><p>对于现实的服务而言，我们并非采用单独的Redis缓存来进行对底层数据库的访问降压操作，更多的选择是在浏览器客户端，Reids，jvm内部，底层数据库等多个环节建立缓存，这样即使Redis出现了缓存雪崩的情况也能在其他缓存中查找数据，避免出现大量访问数据库的问题。</p>
+<p><strong><u>即建立多级缓存</u></strong></p>
+<h3 id="2-3缓存击穿"><a href="#2-3缓存击穿" class="headerlink" title="2.3缓存击穿"></a>2.3缓存击穿</h3><h4 id="2-31解决方式"><a href="#2-31解决方式" class="headerlink" title="2.31解决方式"></a>2.31解决方式</h4><h5 id="2-311方法一-运用互斥锁"><a href="#2-311方法一-运用互斥锁" class="headerlink" title="2.311方法一:运用互斥锁"></a>2.311方法一:运用互斥锁</h5><p>我们知道缓存击穿是因为热点Key被高并发地访问且缓存重建业务较慢造成的数据库高压访问问题。当某个线程在Redis中未查找到数据后就会进行缓存重建的业务—–进行数据库的数据查询并将数据回写到Redis缓存中，这一重建过程一旦缓慢，其他多个线程未在Redis缓存中命中缓存也会重复这一重建过程，具体示意图为:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../images/24-1739096338597-8.png"
+                      alt="24"
+                ></p>
+<p>因此要解决这一问题的方法是当发现缓存未命中时，只让一个线程去进行重写缓存操作，其他线程未命中缓存时休眠一会儿再继续进行访问缓存查看是否命中到缓存数据。但我们如何做到只让一个线程去重写缓存呢？</p>
+<p>我们定义了一个互斥锁，当有线程第一次发现无法命中缓存时就获取到该锁去进行重建业务，而其他线程发现无法命中时再去获取锁时是无法获取到的，于是就进行休眠再访问缓存的操作。这样我们就可以保证只有一个线程去访问数据库重建缓存而不会造成数据库访问压力过大的问题。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../images/25.png"
+                      alt="25"
+                ></p>
+<h6 id="互斥锁的实现："><a href="#互斥锁的实现：" class="headerlink" title="互斥锁的实现："></a>互斥锁的实现：</h6><p>Redis的一个命令—<strong>SETNX</strong>，可以帮助我们实现互斥锁的特点。SETNX命令是指在Redis缓存中不存在要存入的KEY，才能成功存入KEY；否则无法覆盖该KEY。因此我们就可以利用该命令，在第一个线程发现缓存无法命中时存入某一KEY值，当其他线程发现缓存无法命中再想去存入该KEY则无法完成，进而进行休眠的操作；当第一个线程完成重建操作后就把该KEY从Redis缓存中删除，意味着缓存重建成功，当下次发现无法命中缓存时就又可以存入该KEY再来进行缓存重建…….</p>
+<h6 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h6><ul>
+<li>不消耗多余的内存（几乎无损耗）</li>
+<li>实现简单</li>
+<li>保证了数据的一致性</li>
+</ul>
+<h6 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点:"></a>缺点:</h6><ul>
+<li>线程需要等待，性能受到一定影响</li>
+<li>存在着死锁的风险</li>
+</ul>
+<h5 id="2-312方法二-逻辑过期"><a href="#2-312方法二-逻辑过期" class="headerlink" title="2.312方法二:逻辑过期"></a>2.312方法二:逻辑过期</h5><p>逻辑过期的处理方式是<strong>基于互斥锁</strong>的—我们在最开始存入缓存数据时不再设置TTL时间，而是将TTL时间转化为字符串写入缓存数据本身当中，这样缓存数据可以说是<strong>永久性的存在于Redis缓存</strong>当中了，而且还具有<strong>人为可查的TTL过期时间</strong>。</p>
+<p>在TTL这一变化上，我们对方法一的逻辑进行变换—-在每次请求查询缓存时人为的先查看缓存数据的TTL是否过期，没有过期则直接返回数据，如果过期，则获取互斥锁执行方法一的逻辑；然而与方法一略有不同的是<strong>两个点</strong>；1.获取到互斥锁后开启新的线程去进行数据的重建操作，本身线程直接返回旧的缓存数据；2.其他线程发现无法获得互斥锁后不再休眠，也是直接返回旧的缓存数据。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../images/26.png"
+                      alt="26"
+                ></p>
+<h6 id="优点-2"><a href="#优点-2" class="headerlink" title="优点:"></a>优点:</h6><ul>
+<li>线程不等待，性能好</li>
+</ul>
+<h6 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点:"></a>缺点:</h6><ul>
+<li>无法保证数据的一致性</li>
+<li>额外的内存消耗</li>
+<li>实现复杂</li>
+</ul>
 
 		</div>
 
@@ -405,18 +455,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> 会话技术之JWT令牌与interceptor（拦截器）的使用</li>
+        <li><strong>Title:</strong> Redis问题及解决(击穿、雪崩、穿透)</li>
         <li><strong>Author:</strong> Chen-itDiary</li>
         <li><strong>Created at
-                :</strong> 2025-01-11 22:20:32</li>
+                :</strong> 2025-02-13 22:27:22</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-02-07 11:55:22
+                    :</strong> 2025-02-13 22:46:02
             </li>
         
         <li>
-            <strong>Link:</strong> https://redefine.ohevan.com/2025/01/11/会话技术之JWT令牌与interceptor（拦截器）的使用/
+            <strong>Link:</strong> https://redefine.ohevan.com/2025/02/13/Redis问题及解决(击穿、雪崩、穿透)/
         </li>
         <li>
             <strong>
@@ -441,23 +491,11 @@
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/02/13/Redis%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3(%E5%87%BB%E7%A9%BF%E3%80%81%E9%9B%AA%E5%B4%A9%E3%80%81%E7%A9%BF%E9%80%8F)/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Redis问题及解决(击穿、雪崩、穿透)</span>
-						<span class="post-nav-item">Prev posts</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2024/12/17/%E5%91%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88WebSocket%20%20%20%20%20SpringTask%20%20%20%20%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%EF%BC%89/">
+				<a class="next" rel="next" href="/2025/01/11/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BJWT%E4%BB%A4%E7%89%8C%E4%B8%8Einterceptor%EF%BC%88%E6%8B%A6%E6%88%AA%E5%99%A8%EF%BC%89%E7%9A%84%E4%BD%BF%E7%94%A8/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">WebSocket及SpringTask学习笔记</span>
+						<span class="post-nav-title-item">会话技术之JWT令牌与interceptor（拦截器）的使用</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -521,8 +559,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">会话技术之JWT令牌与interceptor（拦截器）的使用</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JWT%E4%BB%A4%E7%89%8C"><span class="nav-text">JWT令牌</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT%E4%BB%A4%E7%89%8C%E7%9A%84%E8%AE%A4%E8%AF%86"><span class="nav-text">JWT令牌的认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT%E4%BB%A4%E7%89%8C%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">JWT令牌的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT%E4%BB%A4%E7%89%8C%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-text">JWT令牌的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interceptor-%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="nav-text">interceptor(拦截器)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#interceptor%E7%9A%84%E8%AE%A4%E8%AF%86"><span class="nav-text">interceptor的认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interceptor%E4%B8%8EJWT"><span class="nav-text">interceptor与JWT</span></a></li></ol></li></ol>
+		<div class="page-title">Redis问题及解决(击穿、雪崩、穿透)</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3-%E5%87%BB%E7%A9%BF%E3%80%81%E9%9B%AA%E5%B4%A9%E3%80%81%E7%A9%BF%E9%80%8F"><span class="nav-text">Redis问题及解决(击穿、雪崩、穿透)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-0Redis%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.0Redis介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1Redis%E7%89%B9%E7%82%B9"><span class="nav-text">1.1Redis特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2Redis%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">1.2Redis应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-0Redis%E9%97%AE%E9%A2%98"><span class="nav-text">2.0Redis问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="nav-text">2.1缓存穿透</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="nav-text">2.2缓存雪崩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="nav-text">2.3缓存击穿</span></a></li></ol></li></ol></li></ol>
 
 	</div>
 </div>
