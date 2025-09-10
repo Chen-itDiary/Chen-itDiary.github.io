@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2025/02/13/redis问题及解决(击穿、雪崩、穿透)/"/>
+    <link rel="canonical" href="http://example.com/2025/09/10/jvm/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -21,24 +21,28 @@
     
     
         
-        <meta name="description" content="Redis问题及解决(击穿、雪崩、穿透)1.0Redis介绍Redis是开源的内存数据结构存储系统，可以作为存储底层数据库热点数据的**缓存中间件**。它不仅可以用作缓存层，还可以作为持久化层使用。Redis使用内存作为数据存储的介质，能够提供非常快速的读写操作，这使得它在缓存场景中受到大量的使用，为底层数据库的安全性能保驾护航(防止大量请求访问底层数据库造成数据库的压力)。 1.1Redis特点">
+        <meta name="description" content="JVMJVM、JRE、JDK关系 JVM屏蔽了底层操作系统的差异，实现了“**一次编译，到处运行**” 程序计数器定义 作用，记住下一条jvm指令（字节码文件）的执行地址 特点 是线程私有的（每个线程都有自己的程序计数器） 不会存在内存泄漏的问题    虚拟机栈定义Java Virtual Machine Stacks（java虚拟机栈）  每个线程运行所需要的内存，被称之为虚拟机栈 每个栈可由多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis问题及解决(击穿、雪崩、穿透)">
-<meta property="og:url" content="http://example.com/2025/02/13/Redis%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3(%E5%87%BB%E7%A9%BF%E3%80%81%E9%9B%AA%E5%B4%A9%E3%80%81%E7%A9%BF%E9%80%8F)/index.html">
+<meta property="og:title" content="JVM学习笔记">
+<meta property="og:url" content="http://example.com/2025/09/10/JVM/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Redis问题及解决(击穿、雪崩、穿透)1.0Redis介绍Redis是开源的内存数据结构存储系统，可以作为存储底层数据库热点数据的**缓存中间件**。它不仅可以用作缓存层，还可以作为持久化层使用。Redis使用内存作为数据存储的介质，能够提供非常快速的读写操作，这使得它在缓存场景中受到大量的使用，为底层数据库的安全性能保驾护航(防止大量请求访问底层数据库造成数据库的压力)。 1.1Redis特点">
+<meta property="og:description" content="JVMJVM、JRE、JDK关系 JVM屏蔽了底层操作系统的差异，实现了“**一次编译，到处运行**” 程序计数器定义 作用，记住下一条jvm指令（字节码文件）的执行地址 特点 是线程私有的（每个线程都有自己的程序计数器） 不会存在内存泄漏的问题    虚拟机栈定义Java Virtual Machine Stacks（java虚拟机栈）  每个线程运行所需要的内存，被称之为虚拟机栈 每个栈可由多">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/24.png">
-<meta property="og:image" content="http://example.com/images/27.png">
-<meta property="og:image" content="http://example.com/images/21.png">
-<meta property="og:image" content="http://example.com/images/24-1739096338597-8.png">
-<meta property="og:image" content="http://example.com/images/25.png">
-<meta property="og:image" content="http://example.com/images/26.png">
-<meta property="article:published_time" content="2025-02-13T14:27:22.443Z">
-<meta property="article:modified_time" content="2025-02-13T14:46:02.132Z">
+<meta property="og:image" content="http://example.com/images/59.png">
+<meta property="og:image" content="d:/blogs/source/images/60.png">
+<meta property="og:image" content="d:/blogs/source/images/61.png">
+<meta property="og:image" content="d:/blogs/source/images/62.png">
+<meta property="og:image" content="d:/blogs/source/images/64.png">
+<meta property="og:image" content="d:/blogs/source/images/65.png">
+<meta property="og:image" content="d:/blogs/source/images/66.png">
+<meta property="og:image" content="d:/blogs/source/images/67.png">
+<meta property="og:image" content="d:/blogs/source/images/68-1757494306300-3.png">
+<meta property="og:image" content="d:/blogs/source/images/69.png">
+<meta property="article:published_time" content="2025-09-10T14:57:22.709Z">
+<meta property="article:modified_time" content="2025-09-10T15:17:02.743Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/24.png">
+<meta name="twitter:image" content="http://example.com/images/59.png">
     
     
     <!--- Icon Part-->
@@ -50,7 +54,7 @@
     
     <title>
         
-            Redis问题及解决(击穿、雪崩、穿透) | Chen-itDiary
+            JVM学习笔记 | Chen-itDiary
         
     </title>
 
@@ -276,7 +280,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Redis问题及解决(击穿、雪崩、穿透)</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">JVM学习笔记</h1>
 			</div>
 			
 		</div>
@@ -297,15 +301,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-02-13 22:27:22</span>
-        <span class="mobile">2025-02-13 22:27:22</span>
+        <span class="desktop">2025-09-10 22:57:22</span>
+        <span class="mobile">2025-09-10 22:57:22</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-02-13 22:46:02</span>
-            <span class="mobile">2025-02-13 22:46:02</span>
+            <span class="desktop">2025-09-10 23:17:02</span>
+            <span class="mobile">2025-09-10 23:17:02</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -332,122 +336,174 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1 id="Redis问题及解决-击穿、雪崩、穿透"><a href="#Redis问题及解决-击穿、雪崩、穿透" class="headerlink" title="Redis问题及解决(击穿、雪崩、穿透)"></a>Redis问题及解决(击穿、雪崩、穿透)</h1><h2 id="1-0Redis介绍"><a href="#1-0Redis介绍" class="headerlink" title="1.0Redis介绍"></a>1.0Redis介绍</h2><p>Redis是开源的内存数据结构存储系统，可以作为存储底层数据库热点数据的**<u>缓存中间件</u>**。它不仅可以用作缓存层，还可以作为持久化层使用。Redis<u><strong>使用内存</strong></u>作为数据存储的介质，能够提供非常<u><strong>快速的读写操作</strong></u>，这使得它在缓存场景中受到大量的使用，为底层数据库的安全性能保驾护航(防止大量请求访问底层数据库造成数据库的压力)。</p>
-<h3 id="1-1Redis特点"><a href="#1-1Redis特点" class="headerlink" title="1.1Redis特点"></a>1.1Redis特点</h3><ol>
-<li><p><strong>内存存储</strong>:Redis将数据存储在内存中，相比传统的磁盘存储读写操作快得多，同时它也支持把数据持久化到磁盘</p>
+			<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><h3 id="JVM、JRE、JDK关系"><a href="#JVM、JRE、JDK关系" class="headerlink" title="JVM、JRE、JDK关系"></a>JVM、JRE、JDK关系</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../images/59.png"
+                      alt="59"
+                ></p>
+<p>JVM屏蔽了底层操作系统的差异，实现了“**<u>一次编译，到处运行</u>**”</p>
+<h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>作用，记住下一条jvm指令（字节码文件）的执行地址</li>
+<li>特点<ul>
+<li>是线程私有的（每个线程都有自己的程序计数器）</li>
+<li>不会存在内存泄漏的问题</li>
+</ul>
 </li>
-<li><p><strong>高性能</strong>:Redis 支持每秒数百万次的读取和写入操作，可以处理非常高的并发请求</p>
+</ul>
+<h2 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>Java Virtual Machine Stacks（java虚拟机栈）</p>
+<ul>
+<li>每个线程运行所需要的内存，被称之为虚拟机栈</li>
+<li>每个栈可由多个栈帧（Frame）组成，对应着每个方法调用时所占用的内存</li>
+<li>每个线程只能有一个活动栈帧，对应着当前正在执行的方法</li>
+</ul>
+<h3 id="栈内存溢出"><a href="#栈内存溢出" class="headerlink" title="栈内存溢出"></a>栈内存溢出</h3><ul>
+<li>栈帧过多导致栈内存溢出</li>
+<li>栈帧过大导致栈内存溢出</li>
+</ul>
+<h3 id="线程运行诊断"><a href="#线程运行诊断" class="headerlink" title="线程运行诊断"></a>线程运行诊断</h3><p>案例1：cpu占用过多</p>
+<p>定位</p>
+<ul>
+<li>用top命令定位哪儿个进程对cpu的占用过高</li>
+<li>ps H -eo pid,tid,%cpu | grep 进程id（用ps命令进一步定位哪儿个线程引起的cpu占用过高）</li>
+<li>jstack 进程id<ul>
+<li>可以根据线程id找到有问题的线程，进一步定位到问题代码的源码行号</li>
+</ul>
 </li>
-<li><p><strong>支持多种数据结构</strong>:除了字符串之外，Redis还支持哈希、列表、集合等多种数据结构，使得Redis可以灵活运用于多种场景</p>
-</li>
-<li><p><strong>分布式</strong>:Redis可以使用集群模式，将数据分布在多个节点上</p>
-</li>
-<li><p><strong>原子性</strong>:Redis 支持对数据进行原子性的增、删、改等操作，确保高并发环境下的数据一致性。</p>
-</li>
-<li><p><strong>事务支持</strong>：Redis 提供简单的事务机制，可以将多个命令放入队列中按顺序执行，支持回滚等操作。</p>
-<h3 id="1-2Redis应用场景"><a href="#1-2Redis应用场景" class="headerlink" title="1.2Redis应用场景"></a>1.2Redis应用场景</h3><ol>
-<li><p><strong>缓存使用</strong>:由于Redis具有超高的读取速度，一般可应用于缓存数据库的数据，如商铺信息、热点等，减轻数据库查询的压力</p>
-</li>
-<li><p><strong>会话存储</strong>：可以将用户会话数据（如登录状态、用户信息）存储在 Redis 中，以提高读取速度，同时可以替代传统的session会话技术，解决session无法数据共享的问题；还可以运用redis实现短信登录的功能。</p>
-<h2 id="2-0Redis问题"><a href="#2-0Redis问题" class="headerlink" title="2.0Redis问题"></a>2.0Redis问题</h2><p>Redis是一个非常好用的缓存工具，平衡着我们底层数据库的访问压力，一定程度上维护其稳定性。但是其也是一把双刃剑，有利也有弊。在我们使用Redis时不可避免地会产生一些经典的缓存问题，例如**<u>缓存击穿、缓存雪崩、缓存穿透</u>**。如果解决的好自然可以持续地发挥其优点，但是如果没有处理好则仍有可能造成底层数据库的高压访问乃至崩溃的情况。</p>
-<ol>
-<li><p>缓存穿透:是指用户发出一请求到达缓存时没有获取到结果，进而到底层数据库访问仍然没有获取到结果，即缓存和数据库都没有该数据。因为缓存没有该数据，所以请求都会打到数据库中，某些人利用这一空挡持续发出大量请求直达到数据库，造成数据库的访问压力，进而崩溃的问题。</p>
-</li>
-<li><p>缓存击穿:是指某时刻某一热点数据在缓存中失效，同时该热点数据被<strong>高并发访问</strong>且又<strong>缓存重建业务较慢</strong>，这也会造成大量请求打到数据库造成数据库访问压力的问题。</p>
+</ul>
+<p>案例2：程序运行很长时间没有结果</p>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:/blogs/source/images/60.png"
+                      alt="60" style="zoom: 50%;" 
+                >
+
+<p>本地方法非java实现，底层由c&#x2F;c++实现</p>
+<p>调用本地方法有本地方法栈来管理其内存</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:/blogs/source/images/61.png"
+                      alt="61"
+                ></p>
+<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>Heap堆</p>
+<ul>
+<li>通过new关键字，创建对象都会用到堆内存</li>
+</ul>
+<p>特点</p>
+<ul>
+<li>线程共享，堆中对象考虑线程安全</li>
+<li>拥有垃圾回收机制</li>
+</ul>
+<h3 id="堆内存溢出"><a href="#堆内存溢出" class="headerlink" title="堆内存溢出"></a>堆内存溢出</h3><h3 id="堆内存诊断"><a href="#堆内存诊断" class="headerlink" title="堆内存诊断"></a>堆内存诊断</h3><p>1.jps</p>
+<ul>
+<li>查看当前系统中的java进程</li>
+</ul>
+<p>2.jmap</p>
+<ul>
+<li>查看堆内存占用 -heap 进程id</li>
+</ul>
+<p>3.jconsole</p>
+<ul>
+<li>图形界面，可以连续监测</li>
+</ul>
+<p>案例:</p>
+<p>jvisualvm工具–可快照查看有多少类、内存的分布……</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:/blogs/source/images/62.png"
+                      alt="62"
+                ></p>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p>![屏幕截图 2025-08-05 105908](D:&#x2F;blogs&#x2F;source&#x2F;images&#x2F;屏幕截图 2025-08-05 105908.png)</p>
+<p>1.6版本方法区属于堆内存的一部分；1.8版本及以后使用本地操作系统内存</p>
+<h3 id="方法区内存溢出"><a href="#方法区内存溢出" class="headerlink" title="方法区内存溢出"></a>方法区内存溢出</h3><p>1.8以前会导致永久代内存溢出</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/../images/24.png"
-                      alt="24"
+                     data-src="D:/blogs/source/images/64.png"
+                      alt="64"
                 ></p>
-</li>
-<li><p>缓存雪崩:是指<strong>大量的缓存数据失效</strong>或<strong>Redis服务宕机</strong>，使得许多请求从缓存中无法获取到数据进而访问数据库的情况，这种情况与缓存击穿类似但不同，缓存雪崩是大量的缓存数据失效，造成许多不同请求都访问到数据库导致数据库压力。</p>
-</li>
+<p>1.8以后会导致元空间内存溢出</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:/blogs/source/images/65.png"
+                      alt="c "
+                ></p>
+<h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><ul>
+<li>常量池，就是一张表，虚拟机指令根据这张常量表去找到要执行的类名、方法名、参数类型、字面量等信息</li>
+<li>运行时常量池，常量池是*.class文件中的，当该类被加载，它的常量池就会被放入运行时常量池，并把里面的符号地址变为真实地址</li>
+</ul>
+<h3 id="StringTable"><a href="#StringTable" class="headerlink" title="StringTable"></a>StringTable</h3><p>懒惰加载，遇到加载该字符串时才生成字符串对象并放入StringTable【结构：hashtable，无法扩容】</p>
+<p> 特性：</p>
+<ul>
+<li>常量池中的字符串仅是符号，在第一次用到才变为对象</li>
+<li>利用串池的机制，避免重复创建字符串对象</li>
+<li>变量的字符串拼接原理是StringBuilder（1.8)—拼接后的字符串仅仅存在堆中</li>
+<li>字符串常量拼接的原理是<strong>编译器优化</strong>–直接寻找StringTable中相同的字符串</li>
+<li>可以使用intern方法，主动将串池中还没有的字符串对象放入串池</li>
+</ul>
+<h3 id="StringTable垃圾回收"><a href="#StringTable垃圾回收" class="headerlink" title="StringTable垃圾回收"></a>StringTable垃圾回收</h3><h3 id="StringTable性能调优"><a href="#StringTable性能调优" class="headerlink" title="StringTable性能调优"></a>StringTable性能调优</h3><ul>
+<li>调整桶个数   -XX:StringTableSize&#x3D;桶个数</li>
+<li>考虑将字符串对象是否入池</li>
+</ul>
+<h2 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h2><h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><p>Direct Memory</p>
+<ul>
+<li>常见于NIO操作时，用于数据缓冲区</li>
+<li>分配回收成本较高，但读写性能高</li>
+<li>不受JVM内存回收管理</li>
+</ul>
+<h3 id="回收方式（释放原理）"><a href="#回收方式（释放原理）" class="headerlink" title="回收方式（释放原理）"></a>回收方式（释放原理）</h3><p>通过Clean对象（虚引用）将DirectByteBuffer和回收内存任务<strong>关联</strong>，当DirectByteBuffer对象被垃圾回收后，直接触发Clean对象的clean()方法，利用Unsafe清除掉直接内存.</p>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><h3 id="如何判断一个对象可以被回收"><a href="#如何判断一个对象可以被回收" class="headerlink" title="如何判断一个对象可以被回收"></a>如何判断一个对象可以被回收</h3><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:/blogs/source/images/66.png"
+                      alt="66"
+                ></p>
+<p>每被引用一次，计数+1，计数为0即表示可回收</p>
+<h3 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h3><ul>
+<li>Java虚拟机种的垃圾回收器通过可达性分析来探索所有存活的对象</li>
+<li>扫描堆中的对象，看是否能够沿着GC Root对象为起点的引用链找到该对象，找不到，表示可以回收</li>
+<li>哪儿些对象可以作为GC Root？</li>
+</ul>
+<h3 id="四种引用"><a href="#四种引用" class="headerlink" title="四种引用"></a>四种引用</h3><ol>
+<li>强引用</li>
+<li>软引用</li>
+<li>弱引用</li>
+<li>虚引用</li>
+<li>终结器引用</li>
 </ol>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/../images/27.png"
-                      alt="27"
+                     data-src="D:/blogs/source/images/67.png"
+                      alt="67"
                 ></p>
-<h3 id="2-1缓存穿透"><a href="#2-1缓存穿透" class="headerlink" title="2.1缓存穿透"></a>2.1缓存穿透</h3><h4 id="2-11解决方式"><a href="#2-11解决方式" class="headerlink" title="2.11解决方式"></a>2.11解决方式</h4><h5 id="2-111方法一-缓存建立null值"><a href="#2-111方法一-缓存建立null值" class="headerlink" title="2.111方法一.缓存建立null值"></a>2.111方法一.缓存建立null值</h5><p>我们知道缓存穿透就是因为缓存层和数据库都没有用户请求访问的数据，导致的大量请求直达数据库问题。因此我们就可以在用户第一次访问该空挡数据时，将一个虚假的null值存储在缓存中，并设立TTL时间避免缓存层存储大量虚假空值。</p>
-<p><u><strong>即在缓存中建立虚假null值并设置TTL时间</strong></u></p>
-<h6 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h6><ul>
-<li>实现简单，维护方便</li>
-</ul>
-<h6 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h6><ul>
-<li>内存额外的消耗</li>
-<li>可能造成数据短期的不一致(例如底层数据库刚好更新了用户访问的数据，但缓存层虚假null值仍未过期，用户访问的数据仍是null值而不是刚更新的底层数据库存储的数据)</li>
-</ul>
-<h5 id="2-112方法二-布隆过滤器"><a href="#2-112方法二-布隆过滤器" class="headerlink" title="2.112方法二:布隆过滤器"></a>2.112方法二:布隆过滤器</h5><p>布隆过滤器其实是一种算法，它的原理是在客户端与Redis之间再<strong>添加一层拦截</strong>，对用户的请求进行判断。布隆过滤器本身通过一定的算法将数据库数据存储，然后对用户的请求进行判断—–如果用户请求的数据不存在，则直接驳回请求；如果用户请求的数据显示存在，则放行进入Redis中查询数据，如果在Redis中没有命中缓存，则再次放行进入到底层数据库查询数据，将数据返回（<strong>注意可能也没有查到数据</strong>）。</p>
-<h6 id="布隆过滤器的特点"><a href="#布隆过滤器的特点" class="headerlink" title="布隆过滤器的特点:"></a>布隆过滤器的特点:</h6><ul>
-<li><h6 id="判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；"><a href="#判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；" class="headerlink" title="判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；"></a>判断用户请求的数据不存在，则一定不存在；判定用户请求的数据存在，则可能存在也可能不存在；</h6></li>
-</ul>
+<p>对于A1被两个GC Root对象直接连接的，表示<strong>强引用</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/../images/21.png"
-                      alt="21"
+                     data-src="D:/blogs/source/images/68-1757494306300-3.png"
+                      alt="68"
                 ></p>
-<h6 id="优点-1"><a href="#优点-1" class="headerlink" title="优点:"></a>优点:</h6><ul>
-<li>内存占用较少，没有多余key值存储在缓存中</li>
-</ul>
-<h6 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h6><ul>
-<li>实现复杂</li>
-<li>存在误判的可能性(仍然可能导致穿透的风险)</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="2-2缓存雪崩"><a href="#2-2缓存雪崩" class="headerlink" title="2.2缓存雪崩"></a>2.2缓存雪崩</h3><h4 id="2-21解决方式"><a href="#2-21解决方式" class="headerlink" title="2.21解决方式"></a>2.21解决方式</h4><h5 id="2-211方法一-给不同Key的TTL设置随机值"><a href="#2-211方法一-给不同Key的TTL设置随机值" class="headerlink" title="2.211方法一:给不同Key的TTL设置随机值"></a>2.211方法一:给不同Key的TTL设置随机值</h5><p>缓存雪崩的原因之一就是大量的缓存数据失效，我们只要设法令其不在统一时间失效就可以有效解决这个问题。因此我们在给Redis中存储数据时，将数据的TTL值设为随机值，可以大幅度降低大量缓存数据同时失效的可能。</p>
-<p><strong><u>即在存储缓存数据时设置随机的TTL值</u></strong></p>
-<h5 id="2-212方法二-利用Redis的集群"><a href="#2-212方法二-利用Redis的集群" class="headerlink" title="2.212方法二:利用Redis的集群"></a>2.212方法二:利用Redis的集群</h5><p>利用哨兵模式，实现Redis的高可用性。</p>
-<p>我们搭建Redis的集群形成主从，利用哨兵进行监控，如果发现主Redis服务器宕机即从其他Redis服务器选择一个代替当前宕机的Redis服务器，同时主从可以实现数据的同步，即使主Redis宕机，从Redis上仍然可以获取到数据不会导致数据的丢失,以此来确保Redis的高可用性。</p>
-<p><strong><u>即搭建Redis集群提高服务的可用性</u></strong></p>
-<h5 id="2-213方法三-给服务添加多级缓存"><a href="#2-213方法三-给服务添加多级缓存" class="headerlink" title="2.213方法三:给服务添加多级缓存"></a>2.213方法三:给服务添加多级缓存</h5><p>对于现实的服务而言，我们并非采用单独的Redis缓存来进行对底层数据库的访问降压操作，更多的选择是在浏览器客户端，Reids，jvm内部，底层数据库等多个环节建立缓存，这样即使Redis出现了缓存雪崩的情况也能在其他缓存中查找数据，避免出现大量访问数据库的问题。</p>
-<p><strong><u>即建立多级缓存</u></strong></p>
-<h3 id="2-3缓存击穿"><a href="#2-3缓存击穿" class="headerlink" title="2.3缓存击穿"></a>2.3缓存击穿</h3><h4 id="2-31解决方式"><a href="#2-31解决方式" class="headerlink" title="2.31解决方式"></a>2.31解决方式</h4><h5 id="2-311方法一-运用互斥锁"><a href="#2-311方法一-运用互斥锁" class="headerlink" title="2.311方法一:运用互斥锁"></a>2.311方法一:运用互斥锁</h5><p>我们知道缓存击穿是因为热点Key被高并发地访问且缓存重建业务较慢造成的数据库高压访问问题。当某个线程在Redis中未查找到数据后就会进行缓存重建的业务—–进行数据库的数据查询并将数据回写到Redis缓存中，这一重建过程一旦缓慢，其他多个线程未在Redis缓存中命中缓存也会重复这一重建过程，具体示意图为:</p>
+<p>如果只有一个软引用连接A2，没有强引用，当垃圾回收后发现空间仍旧不够，则会继续回收A2对象、</p>
+<p>如果只有一个弱引用连接A3，没有强引用，当垃圾回收时就会直接回收该对象</p>
+<p><u>软弱引用可配合引用队列使用：当软弱引用不再被引用，可放入引用队列中，通过引用队列查询软弱引用位置并可用垃圾回收清除</u></p>
+<p>虚引用、终结器引用<strong>必须配合引用队列</strong>使用</p>
+<p>当虚引用引用的对象被垃圾回收时，虚引用就会放入引用队列，最后通过某线程定时查看引用队列并执行相对应Cleaner的方法清除掉直接内存</p>
+<p>当A4对象重写了finallize()方法同时不再被强引用引用该对象时，虚拟机会创建一个终结器引用，引用该对象。当A4对象发生垃圾回收时，终结器引用被放入引用队列，最终仍旧由某一线程查询引用队列并发现终结器引用后，再根据终结器引用找到A4 对象并调用该方法的finallize()方法，在下一次垃圾回收时就可以回收掉该对象.（）</p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p><strong>补充</strong></p>
+</blockquote>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/../images/24-1739096338597-8.png"
-                      alt="24"
+                     data-src="D:/blogs/source/images/69.png"
+                      alt="69"
                 ></p>
-<p>因此要解决这一问题的方法是当发现缓存未命中时，只让一个线程去进行重写缓存操作，其他线程未命中缓存时休眠一会儿再继续进行访问缓存查看是否命中到缓存数据。但我们如何做到只让一个线程去重写缓存呢？</p>
-<p>我们定义了一个互斥锁，当有线程第一次发现无法命中缓存时就获取到该锁去进行重建业务，而其他线程发现无法命中时再去获取锁时是无法获取到的，于是就进行休眠再访问缓存的操作。这样我们就可以保证只有一个线程去访问数据库重建缓存而不会造成数据库访问压力过大的问题。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../images/25.png"
-                      alt="25"
-                ></p>
-<h6 id="互斥锁的实现："><a href="#互斥锁的实现：" class="headerlink" title="互斥锁的实现："></a>互斥锁的实现：</h6><p>Redis的一个命令—<strong>SETNX</strong>，可以帮助我们实现互斥锁的特点。SETNX命令是指在Redis缓存中不存在要存入的KEY，才能成功存入KEY；否则无法覆盖该KEY。因此我们就可以利用该命令，在第一个线程发现缓存无法命中时存入某一KEY值，当其他线程发现缓存无法命中再想去存入该KEY则无法完成，进而进行休眠的操作；当第一个线程完成重建操作后就把该KEY从Redis缓存中删除，意味着缓存重建成功，当下次发现无法命中缓存时就又可以存入该KEY再来进行缓存重建…….</p>
-<h6 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h6><ul>
-<li>不消耗多余的内存（几乎无损耗）</li>
-<li>实现简单</li>
-<li>保证了数据的一致性</li>
-</ul>
-<h6 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点:"></a>缺点:</h6><ul>
-<li>线程需要等待，性能受到一定影响</li>
-<li>存在着死锁的风险</li>
-</ul>
-<h5 id="2-312方法二-逻辑过期"><a href="#2-312方法二-逻辑过期" class="headerlink" title="2.312方法二:逻辑过期"></a>2.312方法二:逻辑过期</h5><p>逻辑过期的处理方式是<strong>基于互斥锁</strong>的—我们在最开始存入缓存数据时不再设置TTL时间，而是将TTL时间转化为字符串写入缓存数据本身当中，这样缓存数据可以说是<strong>永久性的存在于Redis缓存</strong>当中了，而且还具有<strong>人为可查的TTL过期时间</strong>。</p>
-<p>在TTL这一变化上，我们对方法一的逻辑进行变换—-在每次请求查询缓存时人为的先查看缓存数据的TTL是否过期，没有过期则直接返回数据，如果过期，则获取互斥锁执行方法一的逻辑；然而与方法一略有不同的是<strong>两个点</strong>；1.获取到互斥锁后开启新的线程去进行数据的重建操作，本身线程直接返回旧的缓存数据；2.其他线程发现无法获得互斥锁后不再休眠，也是直接返回旧的缓存数据。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/../images/26.png"
-                      alt="26"
-                ></p>
-<h6 id="优点-2"><a href="#优点-2" class="headerlink" title="优点:"></a>优点:</h6><ul>
-<li>线程不等待，性能好</li>
-</ul>
-<h6 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点:"></a>缺点:</h6><ul>
-<li>无法保证数据的一致性</li>
-<li>额外的内存消耗</li>
-<li>实现复杂</li>
-</ul>
 
 		</div>
 
@@ -455,18 +511,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> Redis问题及解决(击穿、雪崩、穿透)</li>
+        <li><strong>Title:</strong> JVM学习笔记</li>
         <li><strong>Author:</strong> Chen-itDiary</li>
         <li><strong>Created at
-                :</strong> 2025-02-13 22:27:22</li>
+                :</strong> 2025-09-10 22:57:22</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-02-13 22:46:02
+                    :</strong> 2025-09-10 23:17:02
             </li>
         
         <li>
-            <strong>Link:</strong> https://redefine.ohevan.com/2025/02/13/Redis问题及解决(击穿、雪崩、穿透)/
+            <strong>Link:</strong> https://redefine.ohevan.com/2025/09/10/JVM/
         </li>
         <li>
             <strong>
@@ -491,23 +547,11 @@
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/03/29/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">java并发编程</span>
-						<span class="post-nav-item">Prev posts</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/01/11/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%E4%B9%8BJWT%E4%BB%A4%E7%89%8C%E4%B8%8Einterceptor%EF%BC%88%E6%8B%A6%E6%88%AA%E5%99%A8%EF%BC%89%E7%9A%84%E4%BD%BF%E7%94%A8/">
+				<a class="next" rel="next" href="/2025/03/29/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">会话技术之JWT令牌与interceptor（拦截器）的使用</span>
+						<span class="post-nav-title-item">java并发编程</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -571,8 +615,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">Redis问题及解决(击穿、雪崩、穿透)</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3-%E5%87%BB%E7%A9%BF%E3%80%81%E9%9B%AA%E5%B4%A9%E3%80%81%E7%A9%BF%E9%80%8F"><span class="nav-text">Redis问题及解决(击穿、雪崩、穿透)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-0Redis%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.0Redis介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1Redis%E7%89%B9%E7%82%B9"><span class="nav-text">1.1Redis特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2Redis%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">1.2Redis应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-0Redis%E9%97%AE%E9%A2%98"><span class="nav-text">2.0Redis问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="nav-text">2.1缓存穿透</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="nav-text">2.2缓存雪崩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="nav-text">2.3缓存击穿</span></a></li></ol></li></ol></li></ol>
+		<div class="page-title">JVM学习笔记</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM%E3%80%81JRE%E3%80%81JDK%E5%85%B3%E7%B3%BB"><span class="nav-text">JVM、JRE、JDK关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-text">程序计数器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="nav-text">虚拟机栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="nav-text">栈内存溢出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E8%BF%90%E8%A1%8C%E8%AF%8A%E6%96%AD"><span class="nav-text">线程运行诊断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86"><span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="nav-text">堆内存溢出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%86%85%E5%AD%98%E8%AF%8A%E6%96%AD"><span class="nav-text">堆内存诊断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-text">方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="nav-text">方法区内存溢出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringTable"><span class="nav-text">StringTable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringTable%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">StringTable垃圾回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringTable%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98"><span class="nav-text">StringTable性能调优</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98"><span class="nav-text">直接内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%94%B6%E6%96%B9%E5%BC%8F%EF%BC%88%E9%87%8A%E6%94%BE%E5%8E%9F%E7%90%86%EF%BC%89"><span class="nav-text">回收方式（释放原理）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6"><span class="nav-text">如何判断一个对象可以被回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="nav-text">引用计数法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="nav-text">可达性分析算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%BC%95%E7%94%A8"><span class="nav-text">四种引用</span></a></li></ol></li></ol>
 
 	</div>
 </div>
